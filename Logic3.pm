@@ -1,6 +1,6 @@
 package Logic3 ;    # Documented at the __END__.
 
-# $Id: Logic3.pm,v 1.8 1999/07/29 18:59:14 root Exp root $
+# $Id: Logic3.pm,v 1.9 1999/08/08 15:16:58 root Exp $
 
 require 5.004 ;
 
@@ -9,7 +9,7 @@ use integer ;
 
 use vars qw( $VERSION @ISA @EXPORT_OK %EXPORT_TAGS ) ;
 
-$VERSION = '1.04' ;
+$VERSION = '1.05' ;
 
 
 use Exporter() ;
@@ -278,6 +278,8 @@ re-written as follows:
 
 1999/07/30  No code changes. Changed for CPAN and automatic testing.
 
+1999/08/08  Changed licence to LGPL.
+
 =head1 AUTHOR
 
 Mark Summerfield. I can be contacted as <summer@chest.ac.uk> -
@@ -287,8 +289,7 @@ please include the word 'logic' in the subject line.
 
 Copyright (c) Mark Summerfield 1998/9. All Rights Reserved.
 
-This module may be used/distributed/modified under the same terms as Perl
-itself.
+This module may be used/distributed/modified under the LGPL. 
 
 =cut
 
