@@ -1,0 +1,115 @@
+NAME
+
+Logic3 - Perl module providing 3-value logic versions of 
+         "and", "or", "xor" and "not".
+
+SYNOPSIS
+
+	use Logic3 qw( And Or Xor Not AND OR XOR NOT TRUE FALSE UNDEF ) ;
+
+	use Logic3 ':ALL' ;
+
+	use Logic3 ':Constants' ; # Gets constants TRUE FALSE UNDEF only.
+
+	use Logic3 ':Propagating' ; # Gets constants and propagating functions.
+
+	use Logic3 ':NonPropagating' ; # Gets constants and non-propagating funcs.
+
+These functions are for scalars, literals and constants. (They don't
+dereference so there's no point in sending them references since
+references are always true.)
+
+    # These propagate undefined.
+    $result = And( $a, $b ) ;
+    $result =  Or( $a, $b ) ;
+    $result = Xor( $a, $b ) ;
+    $result = Not( $a ) ;
+
+    # These do not propagate undefined.
+    $result = AND( $a, $b ) ;
+    $result =  OR( $a, $b ) ;
+    $result = XOR( $a, $b ) ;
+    $result = NOT( $a ) ;
+
+DESCRIPTION
+
+Perl's built-in logical operators, and, or, xor and not
+support two-value logic. This means that they always produce a result
+which is either true or false. In fact perl sometimes returns 0 and
+sometimes returns undef for false depending on the operator and the
+order of the arguments. For "true" Perl generally returns the first 
+value that evaluated to true which turns out to be extremely useful 
+in practice. Given the choice Perl's built-in logical operators are 
+to be preferred - but when you really want 3-value logic it is 
+available through this module.
+
+Three-value logic with the logical operators, And, Or, Xor,
+Not and AND, OR, XOR, NOT provided in this module produce
+one of three results: true, false or undefined. They are "pure" logical
+operators in that they always return one of the constants, TRUE
+(1), FALSE (0) or UNDEF (undef) rather than one of their inputs.
+
+Three-value logic has two different truth tables for "and" and "or";
+this module supports both. (In the Perl column F means F or U.)
+
+Note that And, Or, Xor, and Not propagate undefined and
+AND, OR, XOR, and NOT don't.
+
+        Perl Logic3         Perl Logic3        Perl Logic3 
+    A B and  And AND    A B or   Or  OR    A B xor  Xor XOR
+    - - ---  --- ---    - - --   --  --    - - ---  --- ---
+    U U  F    U   U     U U  F    U   U    U U  F    U   U 
+    U F  F    U   F     U F  F    U   U    U F  F    U   U 
+    F U  F    U   F     F U  F    U   U    F U  F    U   U 
+    F F  F    F   F     F F  F    F   F    F F  F    F   F
+    U T  F    U   U     U T  T    U   T    U T  T    U   U
+    T U  F    U   U     T U  T    U   T    T U  T    U   U
+    T T  T    T   T     T T  T    T   T    T T  F    F   F
+    T F  F    F   F     T F  T    T   T    T F  T    T   T
+    F T  F    F   F     F T  T    T   T    F T  T    T   T
+
+         Perl Logic3
+    A not  Not NOT
+    - ---  --- ---
+    U  T    U   U
+    U  T    U   U
+    F  T    T   T
+    T  F    F   F
+
+BUGS
+
+Although we can use the following comparisons:
+    ( $result == FALSE )
+and
+    ( $result == TRUE )
+using
+    ( $result == UNDEF )
+will lead to complaints if you use -w (which you should of course), if
+$result happens to be undefined, so the last comparison should be
+re-written as follows:
+    ( not defined $result )
+
+CHANGES
+
+1998/4/27   First release.
+
+1998/6/25   First public release.
+
+1999/01/18  Second public release.
+
+1999/02/26  Changed TRUE, FALSE, UNDEF to standard perl-style constants.
+
+AUTHOR
+
+Mark Summerfield. I can be contacted as <mark.summerfield@chest.ac.uk> -
+please include the word 'logic' in the subject line.
+
+COPYRIGHT
+
+Copyright (c) Mark Summerfield 1998/9. All Rights Reserved.
+
+This module may be used/distributed/modified under the same terms as Perl
+itself.
+
+
+
