@@ -1,6 +1,6 @@
 package Logic3 ;    # Documented at the __END__.
 
-# $Id: Logic3.pm,v 1.3 1999/01/18 22:21:11 root Exp $
+# $Id: Logic3.pm,v 1.8 1999/07/29 18:59:14 root Exp root $
 
 require 5.004 ;
 
@@ -9,7 +9,7 @@ use integer ;
 
 use vars qw( $VERSION @ISA @EXPORT_OK %EXPORT_TAGS ) ;
 
-$VERSION = '1.01' ;
+$VERSION = '1.04' ;
 
 
 use Exporter() ;
@@ -182,8 +182,6 @@ Logic3 - Perl module providing 3-value logic versions of
 
 =head1 SYNOPSIS
 
-    use Const ; # This module depends on the Const.pm module.
-
 	use Logic3 qw( And Or Xor Not AND OR XOR NOT TRUE FALSE UNDEF ) ;
 
 	use Logic3 ':ALL' ;
@@ -278,9 +276,11 @@ re-written as follows:
 
 1999/02/26  Changed TRUE, FALSE, UNDEF to standard perl-style constants.
 
+1999/07/30  No code changes. Changed for CPAN and automatic testing.
+
 =head1 AUTHOR
 
-Mark Summerfield. I can be contacted as <mark.summerfield@chest.ac.uk> -
+Mark Summerfield. I can be contacted as <summer@chest.ac.uk> -
 please include the word 'logic' in the subject line.
 
 =head1 COPYRIGHT
